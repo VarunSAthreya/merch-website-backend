@@ -24,7 +24,7 @@ var userSchema = new mongoose.Schema(
         },
         userinfo: {
             typr: String,
-            trim: true,
+            //trim: true,
         },
         encry_password: {
             type: String,
@@ -54,13 +54,13 @@ userSchema
         return this._password;
     });
 
-userSchema.method = {
+userSchema.methods = {
     authenticate: function (plainpassword) {
         return this.securePassword(plainpassword) === this.encry_password;
     },
 
     securePassword: function (plainpassword) {
-        if (!password) return "";
+        if (!plainpassword) return "";
         try {
             return crypto
                 .createHmac("sha256", this.salt)

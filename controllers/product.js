@@ -131,3 +131,24 @@ exports.updateProduct = (req, res) => {
         });
     });
 };
+
+// PRODUCT LISTING
+
+exports.getAllProducts = (req, res) => {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 8;
+    let sortBy = req.query.sortBy ? req.query.sortB : "_id";
+
+    Product.find()
+        .select("-photo")
+        .populate("category")
+        .sort([[sortBy, "asc"]])
+        .limit(8)
+        .exec((err, products) => {
+            if (limit) {
+                return res.status(400).json({
+                    error: "NO PRODUCT FOUND",
+                });
+            }
+            res.json(products);
+        });
+};

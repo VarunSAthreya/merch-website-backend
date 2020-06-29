@@ -153,6 +153,17 @@ exports.getAllProducts = (req, res) => {
         });
 };
 
+exports.getAllUniqueCategories = (req, res) => {
+    Product.distinct("categories", {}, (err, category) => {
+        if (err) {
+            return res.status(400).json({
+                error: "NO category found",
+            });
+        }
+        res.json(category);
+    });
+};
+
 // MIDDLEWARE
 
 exports.updateStock = (req, res, next) => {

@@ -28,7 +28,15 @@ exports.createProduct = (req, res) => {
             });
         }
 
-        // TODO: RESTRICTIONS ON FIELD
+        // DESTRUCTURE THE FILEDS
+        const { name, description, price, category, stock } = fields;
+
+        if (!name || !description || !price || !category || !stock) {
+            return res.status(400).json({
+                error: "Please include all FIELDS",
+            });
+        }
+
         let product = new Product(fields);
 
         //HANDEL FILE HERE

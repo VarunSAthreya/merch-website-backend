@@ -144,7 +144,7 @@ exports.getAllProducts = (req, res) => {
         .sort([[sortBy, "asc"]])
         .limit(8)
         .exec((err, products) => {
-            if (limit) {
+            if (err) {
                 return res.status(400).json({
                     error: "NO PRODUCT FOUND",
                 });

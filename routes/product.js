@@ -2,63 +2,57 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    getProductById,
-    createProduct,
-    getProduct,
-    photo,
-    deleteProduct,
-    updateProduct,
-    getAllProducts,
-    getAllUniqueCategories,
+  getProductById,
+  createProduct,
+  getProduct,
+  photo,
+  updateProduct,
+  deleteProduct,
+  getAllProducts,
+  getAllUniqueCategories
 } = require("../controllers/product");
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
 const { getUserById } = require("../controllers/user");
 
-// ALL OF PARAMS
+//all of params
 router.param("userId", getUserById);
 router.param("productId", getProductById);
 
-//ALL OF ACTUAL ROUTES
-
-// CREATE ROUTES
-
+//all of actual routes
+//create route
 router.post(
-    "/product/create/:userId",
-    isSignedIn,
-    isAuthenticated,
-    isAdmin,
-    createProduct
+  "/product/create/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  createProduct
 );
 
-// READ ROUTES
-
+// read routes
 router.get("/product/:productId", getProduct);
 router.get("/product/photo/:productId", photo);
 
-// DELETE ROUTES
-
+//delete route
 router.delete(
-    "/product/:productId/:userId",
-    isSignedIn,
-    isAuthenticated,
-    isAuthenticated,
-    deleteProduct
+  "/product/:productId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  deleteProduct
 );
 
-// UPDATE ROUTES
-
+//update route
 router.put(
-    "/product/:productId/:userId",
-    isSignedIn,
-    isAuthenticated,
-    isAuthenticated,
-    updateProduct
+  "/product/:productId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  updateProduct
 );
 
-// LISTING ROUTES
-
+//listing route
 router.get("/products", getAllProducts);
 
-router.get("/product/categories", getAllUniqueCategories);
+router.get("/products/categories", getAllUniqueCategories);
 
 module.exports = router;

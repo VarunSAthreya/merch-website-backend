@@ -5,56 +5,50 @@ const { getUserById, pushOrderInPurchaseList } = require("../controllers/user");
 const { updateStock } = require("../controllers/product");
 
 const {
-    getOrderById,
-    createOrder,
-    getAllOrders,
-    getOrderStatus,
-    updateStatus,
+  getOrderById,
+  createOrder,
+  getAllOrders,
+  getOrderStatus,
+  updateStatus
 } = require("../controllers/order");
-const { model } = require("../models/user");
 
-// PARAMS
-
+//params
 router.param("userId", getUserById);
 router.param("orderId", getOrderById);
 
-// ACTUAL ROUTES
-// CREATE
-
+//Actual routes
+//create
 router.post(
-    "/order/create/:userId",
-    isSignedIn,
-    isAuthenticated,
-    pushOrderInPurchaseList,
-    updateStock,
-    createOrder
+  "/order/create/:userId",
+  isSignedIn,
+  isAuthenticated,
+  pushOrderInPurchaseList,
+  updateStock,
+  createOrder
+);
+//read
+router.get(
+  "/order/all/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  getAllOrders
 );
 
-// READ
-
+//status of order
 router.get(
-    "/order/all/:userId",
-    isSignedIn,
-    isAuthenticated,
-    isAdmin,
-    getAllOrders
-);
-
-//  STATUS OF ORDER
-
-router.get(
-    "/order/status/:userId",
-    isSignedIn,
-    isAuthenticated,
-    isAdmin,
-    getOrderStatus
+  "/order/status/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  getOrderStatus
 );
 router.put(
-    "/order/:orderId/status/:userId",
-    isSignedIn,
-    isAuthenticated,
-    isAdmin,
-    updateStatus
+  "/order/:orderId/status/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  updateStatus
 );
 
 module.exports = router;

@@ -7,42 +7,40 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-// ROUTES
+//My routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
-const ordertRoutes = require("./routes/order");
-const stripeRoutes = require("./routes/stripepayment");
+const orderRoutes = require("./routes/order");
 
-// DB CONNECTION
+//DB Connection
 mongoose
-    .connect(process.env.DATABASE, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-    })
-    .then(() => {
-        console.log("DB CONNECTED");
-    });
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
+  .then(() => {
+    console.log("DB CONNECTED");
+  });
 
-// MIDDLEWARES
+//Middlewares
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
-// ROUTS
+//My Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
-app.use("/api", ordertRoutes);
-app.use("/api", stripeRoutes);
+app.use("/api", orderRoutes);
 
-// PORT
+//PORT
 const port = process.env.PORT || 8000;
 
-// STARTING A SERVER
+//Starting a server
 app.listen(port, () => {
-    console.log(`app is running at ${port}`);
+  console.log(`app is running at ${port}`);
 });

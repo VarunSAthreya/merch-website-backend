@@ -1,4 +1,4 @@
-# T-shirt Selling Website Backend
+# Merch Selling Website Backend
  
 Backend for a t-shirt selling website using:
 * [Node.js](https://nodejs.org/)

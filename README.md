@@ -13,11 +13,12 @@ Backend for a t-shirt selling website using:
 # Install dependencies
 npm install
 ```
-Set the enrivonment variables `DATABASE` and `SECRET`
+Set the enrivonment variables `DATABASE`, `SECRET` and `STRIPE_SECRET_KEY`
 
 ```bash
 DATABASE=mongodb://localhost/"PORT"
 SECRET="SECRET"
+STRIPE_SECRET_KEY="SECRET_KEY"
 ```
 ### Running
 

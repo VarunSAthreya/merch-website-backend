@@ -13,7 +13,7 @@ Backend for a Merch selling website using:
 # Install dependencies
 npm install
 ```
-Set the enrivonment variables `DATABASE`, `SECRET` and `STRIPE_SECRET_KEY`
+Set the enrivonment variables **`DATABASE`** , **`SECRET`** and **`STRIPE_SECRET_KEY`**
 
 ```bash
 DATABASE=mongodb://localhost/"PORT"

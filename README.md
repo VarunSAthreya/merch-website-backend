@@ -1,5 +1,7 @@
 # Merch Selling Website Backend
  
+ [![CodeFactor](https://www.codefactor.io/repository/github/varunsathreya/merch-website-backend/badge/master)](https://www.codefactor.io/repository/github/varunsathreya/merch-website-backend/overview/master)
+ 
 Backend for a Merch selling website using:
 * [Node.js](https://nodejs.org/)
 * [Express.js](https://expressjs.com/)

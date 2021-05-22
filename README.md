@@ -7,6 +7,8 @@ Backend for a Merch selling website using:
 * [Express.js](https://expressjs.com/)
 * [MongoDB](https://www.mongodb.com/)
 
+For frontend code click [here](https://github.com/VarunSAthreya/merch-website-frontend)
+
 ## Getting started
 
 ### Installation
